@@ -36,7 +36,27 @@ BTW. You can leave these faded comments be, or delete them. They are but road si
 </head>
 
 <body>
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '811958826857956',
+            xfbml: true,
+            version: 'v14.0'
+        });
+        FB.AppEvents.logPageView();
+    };
 
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <!--Replace the project title and provide a flashy subtitle. Developers refer to this division as a "Hero Block." You don't need to do anything in this html. code, but you'll need to change the background image on the style.css page. First replace the el1.jpg with a .jpg or .png in the project folder (hint: simplify the name). Then use your text editor to open your style.css sheet, find the hero image, and replace el1.jpg with the name of your new image-->
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "040be4be5c784067b7531cc2ee0b51ab"}'></script><!-- End Cloudflare Web Analytics -->
 <div class="hero-image">
@@ -96,6 +116,12 @@ BTW. You can leave these faded comments be, or delete them. They are but road si
 
 
 </div>
+ <div
+            class="fb-like"
+            data-share="true"
+            data-width="450"
+            data-show-faces="true">
+    </div>
 
 
 <div class="textblock" style="text-align: left">
