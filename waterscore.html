@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>水系统评分</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .alarm {
+      background-color: red;
+      color: white;
+      padding: 5px;
+    }
+
+    .total-score {
+      text-align: right;
+      border-top: 1px solid #000;
+      padding-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+<h1>水系统评分</h1>
+<div id="totalScore_all" class="total-score"></div>
+<div class="container">
+
+
+
+
+  <!-- Section 1: 立管 -->
+  <h2>1. 立管</h2>
+  <div id="section1Score_1"></div>
+
+  <!-- Section 1.1: 完好性 -->
+  <h3>1.1 完好性</h3>
+  <div id="section1_1Score_1"></div>
+  <label for="rust_1">1. 是否锈蚀：</label>
+  <select id="rust_1">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+  <label for="leak_1">2. 是否漏水：</label>
+  <select id="leak_1">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+  <label for="missingWrap_1">3. 是否有防冻包扎缺失：</label>
+  <select id="missingWrap_1">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <!-- Section 1.2: 管道材质 -->
+  <h3>1.2 管道材质</h3>
+  <div id="section1_2Score_1"></div>
+  <label for="material_1">选择管道材质：</label>
+  <select id="material_1">
+    <option value="stainlessSteelOrCopper">不锈钢或铜管</option>
+    <option value="steelPlasticComposite">钢塑复合管</option>
+    <option value="plastic">塑料管</option>
+    <option value="galvanized">镀锌管</option>
+  </select><br>
+
+  <!-- Section 1.3: 管道位置 -->
+  <h3>1.3 管道位置</h3>
+  <div id="section1_3Score_1"></div>
+  <label for="publicLocation_1">是否位于公共位置：</label>
+  <select id="publicLocation_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 1.4: 附属设备 -->
+  <h3>1.4 附属设备</h3>
+  <div id="section1_4Score_1"></div>
+  <label for="pressureValve_1">1. 减压阀（如有）是否功能正常，无锈蚀或漏水：</label>
+  <select id="pressureValve_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="waterMeter_1">2. 水表是否位于公共位置：</label>
+  <select id="waterMeter_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 1.5: 立管生消合用 -->
+  <h3>1.5 立管生消合用</h3>
+  <div id="section1_5Score_1"></div>
+  <label for="connection_1">生活立管与消防立管是否有连接关系：</label>
+  <select id="connection_1">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <div id="totalScore_1" class="total-score"></div>
+</div>
+<div class="container">
+
+
+
+
+  <!-- Section 2.1 水池 -->
+  <h2>2.1 水池</h2>
+  <div id="section2_1Score_2_1"></div>
+
+  <!-- Section 2.1.1 水池完好性 -->
+  <h3>2.1.1 水池完好性</h3>
+  <div id="section2_1_1Score_2_1"></div>
+  <label for="rust_2_1">1. 是否锈蚀：</label>
+  <select id="rust_2_1">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+  <label for="leak_2_1">2. 是否漏水：</label>
+  <select id="leak_2_1">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <!-- Section 2.1.2 水池材质 -->
+  <h3>2.1.2 水池材质</h3>
+  <div id="section2_1_2Score_2_1"></div>
+  <label for="material_2_1">选择水池材质：</label>
+  <select id="material_2_1">
+    <option value="stainlessSteel">不锈钢</option>
+    <option value="concreteWithTilesOrStainlessSteel">混凝土，内衬瓷砖、不锈钢</option>
+    <option value="concreteWithPEOrNanoCoating">混凝土，内衬PE、纳米涂层等</option>
+    <option value="concreteWithoutLining">混凝土，无内衬</option>
+  </select><br>
+
+  <!-- Section 2.1.3 水池进水 -->
+  <h3>2.1.3 水池进水</h3>
+  <div id="section2_1_3Score_2_1"></div>
+  <label for="electronicControl_2_1">1. 是否电子控制进水模式：</label>
+  <select id="electronicControl_2_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="valve_2_1">2. 阀门是否正常，无锈蚀或漏水：</label>
+  <select id="valve_2_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="secondShutoff_2_1">3. 是否具有第二路断水装置：</label>
+  <select id="secondShutoff_2_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 2.1.4 水池排水 -->
+  <h3>2.1.4 水池排水</h3>
+  <div id="section2_1_4Score_2_1"></div>
+  <label for="drainFacility_2_1">1. 排水设施是否完好：</label>
+  <select id="drainFacility_2_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="insectScreen_2_1">2. 防虫网罩是否完好：</label>
+  <select id="insectScreen_2_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="airSeparation_2_1">3. 排水设施是否有空气隔断：</label>
+  <select id="airSeparation_2_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 2.1.5 安全性 -->
+  <h3>2.1.5 安全性</h3>
+  <div id="section2_1_5Score_2_1"></div>
+  <label for="lock_2_1">是否上锁且锁具完好：</label>
+  <select id="lock_2_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 2.1.6 水池生消合用 -->
+  <h3>2.1.6 水池生消合用</h3>
+  <div id="section2_1_6Score_2_1"></div>
+  <label for="independence_2_1">生活水池与消防水池是否独立：</label>
+  <select id="independence_2_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <div id="totalScore_2_1" class="total-score"></div>
+</div>
+<div class="container">
+
+
+
+
+  <!-- Section 2.2 管道 -->
+  <h2>2.2 管道</h2>
+  <div id="section2_2Score_2_2"></div>
+
+  <!-- Section 2.2.1 泵房管道完好性 -->
+  <h3>2.2.1 泵房管道完好性</h3>
+  <div id="section2_2_1Score_2_2"></div>
+  <label for="rust_2_2">1. 是否锈蚀：</label>
+  <select id="rust_2_2">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+  <label for="leak_2_2">2. 是否漏水：</label>
+  <select id="leak_2_2">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <!-- Section 2.2.2 泵房管道材质 -->
+  <h3>2.2.2 泵房管道材质</h3>
+  <div id="section2_2_2Score_2_2"></div>
+  <label for="material_2_2">选择管道材质：</label>
+  <select id="material_2_2">
+    <option value="stainlessSteelOrCopper">不锈钢或铜管</option>
+    <option value="steelPlasticComposite">钢塑复合管</option>
+    <option value="plastic">塑料管</option>
+    <option value="galvanized">镀锌管</option>
+  </select><br>
+
+  <!-- Section 2.2.3 泵房管道生消合用 -->
+  <h3>2.2.3 泵房管道生消合用</h3>
+  <div id="section2_2_3Score_2_2"></div>
+  <label for="connection_2_2">出泵生活管与消防管有连接关系：</label>
+  <select id="connection_2_2">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <div id="totalScore_2_2" class="total-score"></div>
+</div>
+<div class="container">
+  <h1>水系统评分</h1>
+
+
+
+  <!-- Section 2.3 水泵 -->
+  <h2>2.3 水泵</h2>
+  <div id="section2_3Score_2_3"></div>
+
+  <!-- Section 2.3.1 水泵完好性 -->
+  <h3>2.3.1 水泵完好性</h3>
+  <div id="section2_3_1Score_2_3"></div>
+  <label for="rustLeak_2_3">1. 是否锈蚀、漏水：</label>
+  <select id="rustLeak_2_3">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+  <label for="damage_2_3">2. 是否损坏：</label>
+  <select id="damage_2_3">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <!-- Section 2.3.2 水泵材质 -->
+  <h3>2.3.2 水泵材质</h3>
+  <div id="section2_3_2Score_2_3"></div>
+  <label for="material_2_3">选择水泵材质：</label>
+  <select id="material_2_3">
+    <option value="stainlessSteel">不锈钢</option>
+    <option value="castIron">铸铁</option>
+  </select><br>
+
+  <!-- Section 2.3.3 水泵模式 -->
+  <h3>2.3.3 水泵模式</h3>
+  <div id="section2_3_3Score_2_3"></div>
+  <label for="mode_2_3">选择水泵模式：</label>
+  <select id="mode_2_3">
+    <option value="vertical">立式</option>
+    <option value="horizontal">卧式</option>
+  </select><br>
+  <div id="totalScore_2_3" class="total-score"></div>
+
+</div>
+<div class="container">
+
+
+
+
+  <!-- Section 2.4 附属设施 -->
+  <h2>2.4 附属设施</h2>
+  <div id="section2_4Score_2_4"></div>
+
+  <!-- Section 2.4.1 仪表 -->
+  <h3>2.4.1 仪表</h3>
+  <div id="section2_4_1Score_2_4"></div>
+  <label for="instrument_2_4">自动在线仪表是否显示正常，状态正常：</label>
+  <select id="instrument_2_4">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <!-- Section 2.4.2 阀门 -->
+  <h3>2.4.2 阀门</h3>
+  <div id="section2_4_2Score_2_4"></div>
+  <label for="valve_2_4">各阀门组件功能是否正常，是否存在跑冒滴漏现象：</label>
+  <select id="valve_2_4">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <div id="totalScore_2_4" class="total-score"></div>
+</div>
+<div class="container">
+
+
+
+
+  <!-- Section 2.5 泵房环境 -->
+  <h2>2.5 泵房环境</h2>
+  <div id="section2_5Score_2_5"></div>
+
+  <!-- Section 2.5.1 噪音 -->
+  <h3>2.5.1 噪音</h3>
+  <div id="section2_5_1Score_2_5"></div>
+  <label for="noise_2_5">白天泵房门外1米噪音分贝：</label>
+  <select id="noise_2_5">
+    <option value="1">≤50dB</option>
+    <option value="2">50-60dB</option>
+    <option value="3">60-70dB</option>
+    <option value="4">＞70dB</option>
+  </select><br>
+
+  <!-- Section 2.5.2 位置 -->
+  <h3>2.5.2 位置</h3>
+  <div id="section2_5_2Score_2_5"></div>
+  <label for="position_2_5">泵房是否位于居民卧室下方：</label>
+  <select id="position_2_5">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <!-- Section 2.5.3 通风排水 -->
+  <h3>2.5.3 通风排水</h3>
+  <div id="section2_5_3Score_2_5"></div>
+  <label for="drainage_2_5">排水是否运转正常：</label>
+  <select id="drainage_2_5">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="ventilation_2_5">通风（地下泵房）是否运转正常：</label>
+  <select id="ventilation_2_5">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 2.5.4 堆物住人 -->
+  <h3>2.5.4 堆物住人</h3>
+  <div id="section2_5_4Score_2_5"></div>
+  <label for="clutter_2_5">是否堆物：</label>
+  <select id="clutter_2_5">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+  <label for="residents_2_5">是否住人：</label>
+  <select id="residents_2_5">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+
+  <!-- Section 2.5.5 安防监控 -->
+  <h3>2.5.5 安防监控</h3>
+  <div id="section2_5_5Score_2_5"></div>
+  <label for="accessControl_2_5">泵房是否存在门禁（上锁）设施：</label>
+  <select id="accessControl_2_5">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+  <label for="surveillance_2_5">泵房是否存在监控设施：</label>
+  <select id="surveillance_2_5">
+    <option value="no">否</option>
+    <option value="yes">是</option>
+  </select><br>
+  <div id="totalScore_2_5" class="total-score"></div>
+
+</div>
+<div class="container">
+
+
+
+
+  <!-- Section 3.1 水箱 -->
+  <h2>3.1 水箱</h2>
+  <div id="section3_1Score_3_1"></div>
+
+  <!-- Section 3.1.1 水箱完好性 -->
+  <h3>3.1.1 水箱完好性</h3>
+  <div id="section3_1_1Score_3_1"></div>
+  <label for="corrosion_3_1">是否锈蚀：</label>
+  <select id="corrosion_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="leakage_3_1">是否漏水：</label>
+  <select id="leakage_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 3.1.2 水箱材质 -->
+  <h3>3.1.2 水箱材质</h3>
+  <div id="section3_1_2Score_3_1"></div>
+  <label for="material_3_1">材质选择：</label>
+  <select id="material_3_1">
+    <option value="stainless">不锈钢</option>
+    <option value="concrete_tiles_stainless">混凝土，内衬瓷砖、不锈钢</option>
+    <option value="concrete_pe_nanocoating">混凝土，内衬PE、纳米涂层等</option>
+    <option value="concrete">混凝土，无内衬</option>
+  </select><br>
+
+  <!-- Section 3.1.3 水箱进水 -->
+  <h3>3.1.3 水箱进水</h3>
+  <div id="section3_1_3Score_3_1"></div>
+  <label for="electronic_control_3_1">是否电子控制进水模式：</label>
+  <select id="electronic_control_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="inlet_valve_3_1">进水阀门是否完好：</label>
+  <select id="inlet_valve_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="float_valve_3_1">浮球阀是否均正常使用：</label>
+  <select id="float_valve_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 3.1.4 水箱排水 -->
+  <h3>3.1.4 水箱排水</h3>
+  <div id="section3_1_4Score_3_1"></div>
+  <label for="drainage_facility_3_1">排水设施是否完好：</label>
+  <select id="drainage_facility_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="insect_screen_3_1">防虫网罩是否完好：</label>
+  <select id="insect_screen_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <label for="air_partition_3_1">排水设施是否有空气隔断：</label>
+  <select id="air_partition_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 3.1.5 水箱生消合用 -->
+  <h3>3.1.5 水箱生消合用</h3>
+  <div id="section3_1_5Score_3_1"></div>
+  <label for="life_fire_separate_3_1">生活水箱与消防水箱是否独立：</label>
+  <select id="life_fire_separate_3_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <div id="totalScore_3_1" class="total-score"></div>
+
+</div>
+<div class="container">
+
+
+
+
+  <!-- Section 3.2 屋顶水箱环境 -->
+  <h2>3.2 屋顶水箱环境</h2>
+  <div id="section3_2Score_3_2"></div>
+
+  <!-- Section 3.2.1 是否保温 -->
+  <h3>3.2.1 是否保温</h3>
+  <div id="section3_2_1Score_3_2"></div>
+  <label for="insulation_3_2">是否保温：</label>
+  <select id="insulation_3_2">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 3.2.2 是否上锁 -->
+  <h3>3.2.2 是否上锁</h3>
+  <div id="section3_2_2Score_3_2"></div>
+  <label for="lock_3_2">是否上锁：</label>
+  <select id="lock_3_2">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 3.2.3 有无安全护栏 -->
+  <h3>3.2.3 有无安全护栏</h3>
+  <div id="section3_2_3Score_3_2"></div>
+  <label for="safety_fence_3_2">有无安全护栏：</label>
+  <select id="safety_fence_3_2">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 3.3 屋顶增压泵（如有） -->
+  <h2>3.3 屋顶增压泵（如有）</h2>
+  <div id="section3_3Score_3_2"></div>
+
+  <!-- Section 3.3.1 水泵完好性 -->
+  <h3>3.3.1 水泵完好性</h3>
+  <div id="section3_3_1Score_3_2"></div>
+  <label for="rust_leakage_3_2">是否存在锈蚀或漏水：</label>
+  <select id="rust_leakage_3_2">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 3.3.2 水泵运行状态 -->
+  <h3>3.3.2 水泵运行状态</h3>
+  <div id="section3_3_2Score_3_2"></div>
+  <label for="damage_3_2">是否损坏无法使用：</label>
+  <select id="damage_3_2">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <div id="totalScore_3_2" class="total-score"></div>
+
+</div>
+<div class="container">
+
+
+
+
+  <!-- Section 4 水箱（池） -->
+  <h2>4 水箱（池）</h2>
+  <div id="section4Score_4"></div>
+
+  <!-- Section 4.1 巡检清洁水箱（池） -->
+  <h3>4.1 巡检清洁水箱（池）</h3>
+  <div id="section4_1Score_4"></div>
+  <label for="inspection_cleaning_4">是否定期巡检清洁水箱（池）：</label>
+  <select id="inspection_cleaning_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 4.2 清洗消毒水箱（池） -->
+  <h3>4.2 清洗消毒水箱（池）</h3>
+  <div id="section4_2Score_4"></div>
+  <label for="cleaning_disinfection_4">是否每年至少两次清洗消毒水箱（池）：</label>
+  <select id="cleaning_disinfection_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 5 泵房 -->
+  <h2>5 泵房</h2>
+  <div id="section5Score_4"></div>
+
+  <!-- Section 5.1 定期巡检泵房 -->
+  <h3>5.1 定期巡检泵房</h3>
+  <div id="section5_1Score_4"></div>
+  <label for="regular_inspection_pump_room_4">是否定期巡检泵房：</label>
+  <select id="regular_inspection_pump_room_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 5.2 定期维保水泵机组 -->
+  <h3>5.2 定期维保水泵机组</h3>
+  <div id="section5_2Score_4"></div>
+  <label for="regular_maintenance_pump_unit_4">是否定期维保水泵机组：</label>
+  <select id="regular_maintenance_pump_unit_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 5.3 定期切换备用泵组 -->
+  <h3>5.3 定期切换备用泵组</h3>
+  <div id="section5_3Score_4"></div>
+  <label for="regular_switch_spare_pump_group_4">是否定期切换备用泵组：</label>
+  <select id="regular_switch_spare_pump_group_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 5.4 维修损坏设备 -->
+  <h3>5.4 维修损坏设备</h3>
+  <div id="section5_4Score_4"></div>
+  <label for="repair_damaged_equipment_4">是否及时维修各类损坏设备：</label>
+  <select id="repair_damaged_equipment_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 5.5 排污设备运行正常 -->
+  <h3>5.5 排污设备运行正常</h3>
+  <div id="section5_5Score_4"></div>
+  <label for="normal_operation_discharge_equipment_4">排污设备是否运行正常：</label>
+  <select id="normal_operation_discharge_equipment_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 5.6 定期操作各类阀门 -->
+  <h3>5.6 定期操作各类阀门</h3>
+  <div id="section5_6Score_4"></div>
+  <label for="regular_operation_valves_4">是否定期操作各类阀门：</label>
+  <select id="regular_operation_valves_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 6 楼宇管道 -->
+  <h2>6 楼宇管道</h2>
+  <div id="section6Score_4"></div>
+
+  <!-- Section 6.1 定期巡检楼道 -->
+  <h3>6.1 定期巡检楼道</h3>
+  <div id="section6_1Score_4"></div>
+  <label for="regular_inspection_corridor_4">是否定期巡检楼道：</label>
+  <select id="regular_inspection_corridor_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 6.2 定期切换减压阀，拆洗过滤器 -->
+  <h3>6.2 定期切换减压阀，拆洗过滤器</h3>
+  <div id="section6_2Score_4"></div>
+  <label for="regular_switch_pressure_relief_valve_4">是否定期切换减压阀，拆洗过滤器：</label>
+  <select id="regular_switch_pressure_relief_valve_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 6.3 定期保养阀门 -->
+  <h3>6.3 定期保养阀门</h3>
+  <div id="section6_3Score_4"></div>
+  <label for="regular_maintenance_valves_4">是否定期保养各类阀门：</label>
+  <select id="regular_maintenance_valves_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 6.4 废除旧立管 -->
+  <h3>6.4 废除旧立管</h3>
+  <div id="section6_4Score_4"></div>
+  <label for="abolish_old_riser_4">是否废除旧立管：</label>
+  <select id="abolish_old_riser_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 7 消毒剂 -->
+  <h2>7 消毒剂</h2>
+  <div id="section7Score_4"></div>
+
+  <!-- Section 7.1 消毒剂快检 -->
+  <h3>7.1 消毒剂快检</h3>
+  <div id="section7_1Score_4"></div>
+  <label for="disinfectant_quick_test_4">是否消毒前对消毒剂有效浓度进行快检：</label>
+  <select id="disinfectant_quick_test_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 7.2 消毒剂来源 -->
+  <h3>7.2 消毒剂来源</h3>
+  <div id="section7_2Score_4"></div>
+  <label for="disinfectant_source_4">消毒剂来源是否清楚，质量合格：</label>
+  <select id="disinfectant_source_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+  <div id="totalScore_4" class="total-score"></div>
+
+</div>
+<div class="container">
+
+  <!-- Section 8 供水模式 -->
+  <h2>8 供水模式</h2>
+  <div id="section8Score_8"></div>
+  <label for="supply_mode_8">请选择供水模式：</label>
+  <select id="supply_mode_8">
+    <option value="option1">市政直供有水箱</option>
+    <option value="option2">市政直供无水箱</option>
+    <option value="option3">变频供水有水箱</option>
+    <option value="option4">变频供水无水箱</option>
+    <option value="option5">工频水箱供水有屋顶增压泵</option>
+    <option value="option6">工频水箱供水无屋顶增压泵</option>
+    <option value="option7">叠压供水有稳压罐</option>
+    <option value="option8">叠压供水无稳压罐</option>
+  </select><br>
+
+  <!-- Section 9 设备使用年限 -->
+  <h2>9 设备使用年限</h2>
+  <div id="section9Score_8"></div>
+  <label for="equipment_age_8">请选择设备使用年限：</label>
+  <select id="equipment_age_8">
+    <option value="option1">5年以内</option>
+    <option value="option2">5-10年</option>
+    <option value="option3">10-20年</option>
+    <option value="option4">20年以上</option>
+  </select><br>
+
+  <!-- Total Score -->
+  <div id="totalScore_8" class="total-score"></div>
+
+
+</div>
+<div class="container">
+
+
+  <!-- Section 10.1 二次供水设施维护状态 -->
+  <h2>10.1 二次供水设施维护状态</h2>
+  <div id="section10_1Score_10"></div>
+  <label for="maintenance_status_10_1_1">是否功能正常：</label>
+  <select id="maintenance_status_10_1_1">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <label for="maintenance_status_10_1_2">是否状态良好：</label>
+  <select id="maintenance_status_10_1_2">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <label for="maintenance_status_10_1_3">是否干净整洁：</label>
+  <select id="maintenance_status_10_1_3">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 10.2 与水司配合程度 -->
+  <h2>10.2 与水司配合程度</h2>
+  <div id="section10_2Score_10"></div>
+  <label for="cooperation_level_10_2">请选择与水司配合程度：</label>
+  <select id="cooperation_level_10_2">
+    <option value="very_cooperative">非常配合</option>
+    <option value="quite_cooperative">比较配合</option>
+    <option value="not_very_cooperative">不太配合</option>
+    <option value="refuse_cooperation">拒不配合</option>
+  </select><br>
+
+  <!-- Section 10.3 资质、资料、资金明细状态 -->
+  <h2>10.3 资质、资料、资金明细状态</h2>
+  <div id="section10_3Score_10"></div>
+  <label for="qualification_status_10_3">物业管理是否资质齐全、证件齐全：</label>
+  <select id="qualification_status_10_3">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <label for="document_status_10_3">小区图纸、工程竣工资料是否齐全：</label>
+  <select id="document_status_10_3">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <label for="fund_status_10_3">维修保养资金明细是否公开、清楚：</label>
+  <select id="fund_status_10_3">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Section 10.4 巡检、保养、维修状态 -->
+  <h2>10.4 巡检、保养、维修状态</h2>
+  <div id="section10_4Score_10"></div>
+  <label for="professional_personnel_10_4">是否配置专业巡检、保养、维修人员，且证件齐全：</label>
+  <select id="professional_personnel_10_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <label for="regular_maintenance_10_4">是否定期巡检、保养，及时维修：</label>
+  <select id="regular_maintenance_10_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <label for="maintenance_records_10_4">是否有相关巡检、保养、维修记录：</label>
+  <select id="maintenance_records_10_4">
+    <option value="yes">是</option>
+    <option value="no">否</option>
+  </select><br>
+
+  <!-- Total Score -->
+  <div id="totalScore_10" class="total-score"></div>
+
+</div>
+</div>
+<script>
+  function calculateScore_10() {
+    // Section 10.1
+    const maintenanceStatus_10_1_1 = document.getElementById('maintenance_status_10_1_1').value;
+    const maintenanceStatus_10_1_2 = document.getElementById('maintenance_status_10_1_2').value;
+    const maintenanceStatus_10_1_3 = document.getElementById('maintenance_status_10_1_3').value;
+    let section10_1Score_10 = 0;
+
+    if (maintenanceStatus_10_1_1 === 'yes' && maintenanceStatus_10_1_2 === 'yes' && maintenanceStatus_10_1_3 === 'yes') {
+      section10_1Score_10 = 3.0;
+    } else if (maintenanceStatus_10_1_1 === 'no' && maintenanceStatus_10_1_2 === 'no' && maintenanceStatus_10_1_3 === 'no') {
+      // No score
+    } else if (maintenanceStatus_10_1_1 === 'no' || maintenanceStatus_10_1_2 === 'no' || maintenanceStatus_10_1_3 === 'no') {
+      section10_1Score_10 = 1.0;
+    } else {
+      section10_1Score_10 = 2.0;
+    }
+
+    // Section 10.2
+    const cooperationLevel_10_2 = document.getElementById('cooperation_level_10_2').value;
+    let section10_2Score_10 = 0;
+
+    switch (cooperationLevel_10_2) {
+      case 'very_cooperative':
+        section10_2Score_10 = 3.0;
+        break;
+      case 'quite_cooperative':
+        section10_2Score_10 = 2.0;
+        break;
+      case 'not_very_cooperative':
+        section10_2Score_10 = 1.0;
+        break;
+      case 'refuse_cooperation':
+        // No score
+        break;
+    }
+
+    // Section 10.3
+    const qualificationStatus_10_3 = document.getElementById('qualification_status_10_3').value;
+    const documentStatus_10_3 = document.getElementById('document_status_10_3').value;
+    const fundStatus_10_3 = document.getElementById('fund_status_10_3').value;
+    let section10_3Score_10 = 0;
+
+    if (qualificationStatus_10_3 === 'yes' && documentStatus_10_3 === 'yes' && fundStatus_10_3 === 'yes') {
+      section10_3Score_10 = 1.5;
+    } else if (qualificationStatus_10_3 === 'no' && documentStatus_10_3 === 'no' && fundStatus_10_3 === 'no') {
+      // No score
+    } else if (qualificationStatus_10_3 === 'no' || documentStatus_10_3 === 'no' || fundStatus_10_3 === 'no') {
+      section10_3Score_10 = 0.5;
+    } else {
+      section10_3Score_10 = 1.0;
+    }
+
+    // Section 10.4
+    const professionalPersonnel_10_4 = document.getElementById('professional_personnel_10_4').value;
+    const regularMaintenance_10_4 = document.getElementById('regular_maintenance_10_4').value;
+    const maintenanceRecords_10_4 = document.getElementById('maintenance_records_10_4').value;
+    let section10_4Score_10 = 0;
+
+    if (professionalPersonnel_10_4 === 'yes' && regularMaintenance_10_4 === 'yes' && maintenanceRecords_10_4 === 'yes') {
+      section10_4Score_10 = 1.5;
+    } else if (professionalPersonnel_10_4 === 'no' && regularMaintenance_10_4 === 'no' && maintenanceRecords_10_4 === 'no') {
+      // No score
+    } else if (professionalPersonnel_10_4 === 'no' || regularMaintenance_10_4 === 'no' || maintenanceRecords_10_4 === 'no') {
+      section10_4Score_10 = 0.5;
+    } else {
+      section10_4Score_10 = 1.0;
+    }
+
+    // Total Score
+    const totalScore_10 = section10_1Score_10 + section10_2Score_10 + section10_3Score_10 + section10_4Score_10;
+
+    // Display scores
+    document.getElementById('section10_1Score_10').textContent = `10.1 二次供水设施维护状态 分数: ${section10_1Score_10}`;
+    document.getElementById('section10_2Score_10').textContent = `10.2 与水司配合程度 分数: ${section10_2Score_10}`;
+    document.getElementById('section10_3Score_10').textContent = `10.3 资质、资料、资金明细状态 分数: ${section10_3Score_10}`;
+    document.getElementById('section10_4Score_10').textContent = `10.4 巡检、保养、维修状态 分数: ${section10_4Score_10}`;
+    document.getElementById('totalScore_10').textContent = `总分10: ${totalScore_10}`;
+
+    // Check if an alarm is needed (adjust the threshold as needed)
+    const alarmThreshold = 3;
+    if (totalScore_10 < alarmThreshold) {
+      document.body.classList.add('alarm');
+    } else {
+      document.body.classList.remove('alarm');
+    }
+    return totalScore_10;
+  }
+
+
+  // Initial calculation
+  calculateScore_10();
+
+  function calculateScore_1() {
+    const rust_1 = document.getElementById('rust_1').value;
+    const leak_1 = document.getElementById('leak_1').value;
+    const material_1 = document.getElementById('material_1').value;
+    const publicLocation_1 = document.getElementById('publicLocation_1').value;
+    const pressureValve_1 = document.getElementById('pressureValve_1').value;
+    const waterMeter_1 = document.getElementById('waterMeter_1').value;
+    const connection_1 = document.getElementById('connection_1').value;
+
+    const section1_1Score_1 = (rust_1 === 'yes' ? 1 : 0) + (leak_1 === 'yes' ? 1 : 0) + (missingWrap_1 === 'yes' ? 1 : 0);
+    const section1_2Score_1 = (material_1 === 'stainlessSteelOrCopper' ? 3 : (material_1 === 'steelPlasticComposite' ? 2 : (material_1 === 'plastic' ? 0 : 4)));
+    const section1_3Score_1 = (publicLocation_1 === 'yes' ? 1 : 0);
+    const section1_4Score_1 = (pressureValve_1 === 'yes' ? 1 : 0) + (waterMeter_1 === 'yes' ? 0.5 : 0) + ((pressureValve_1 === 'yes' && waterMeter_1 === 'yes') ? 0 : 1);
+    const section1_5Score_1 = (connection_1 === 'no' ? 4 : 0);
+
+    const totalScore_1 = section1_1Score_1 + section1_2Score_1 + section1_3Score_1 + section1_4Score_1 + section1_5Score_1;
+
+    document.getElementById('section1_1Score_1').textContent = `1.1 完好性 分数: ${section1_1Score_1}`;
+    document.getElementById('section1_2Score_1').textContent = `1.2 管道材质 分数: ${section1_2Score_1}`;
+    document.getElementById('section1_3Score_1').textContent = `1.3 管道位置 分数: ${section1_3Score_1}`;
+    document.getElementById('section1_4Score_1').textContent = `1.4 附属设备 分数: ${section1_4Score_1}`;
+    document.getElementById('section1_5Score_1').textContent = `1.5 立管生消合用 分数: ${section1_5Score_1}`;
+    document.getElementById('totalScore_1').textContent = `总分1: ${totalScore_1}`;
+
+    if (totalScore_1 < 5) {
+      document.getElementById('totalScore_1').classList.add('alarm');
+    } else {
+      document.getElementById('totalScore_1').classList.remove('alarm');
+    }
+
+    return totalScore_1;
+  }
+
+  // Calculate the score initially
+  calculateScore_1();
+
+  function calculateScore_2_1() {
+    const rust_2_1 = document.getElementById('rust_2_1').value;
+    const leak_2_1 = document.getElementById('leak_2_1').value;
+    const material_2_1 = document.getElementById('material_2_1').value;
+    const electronicControl_2_1 = document.getElementById('electronicControl_2_1').value;
+    const valve_2_1 = document.getElementById('valve_2_1').value;
+    const secondShutoff_2_1 = document.getElementById('secondShutoff_2_1').value;
+    const drainFacility_2_1 = document.getElementById('drainFacility_2_1').value;
+    const insectScreen_2_1 = document.getElementById('insectScreen_2_1').value;
+    const airSeparation_2_1 = document.getElementById('airSeparation_2_1').value;
+    const lock_2_1 = document.getElementById('lock_2_1').value;
+    const independence_2_1 = document.getElementById('independence_2_1').value;
+
+    const section2_1_1Score_2_1 = (rust_2_1 === 'yes' ? 1 : 0) + (leak_2_1 === 'yes' ? 1 : 0);
+    const section2_1_2Score_2_1 = (material_2_1 === 'stainlessSteel' ? 2 : (material_2_1 === 'concreteWithTilesOrStainlessSteel' ? 1.5 : (material_2_1 === 'concreteWithPEOrNanoCoating' ? 1 : 4)));
+    const section2_1_3Score_2_1 = (electronicControl_2_1 === 'yes' ? 1 : 0) + (valve_2_1 === 'yes' ? 1 : 0) + (secondShutoff_2_1 === 'yes' ? 1 : 0);
+    const section2_1_4Score_2_1 = (drainFacility_2_1 === 'yes' ? 2 : 0) + (insectScreen_2_1 === 'yes' ? 1 : 0) + (airSeparation_2_1 === 'yes' ? 0.5 : 0);
+    const section2_1_5Score_2_1 = (lock_2_1 === 'yes' ? 1 : 0);
+    const section2_1_6Score_2_1 = (independence_2_1 === 'no' ? 4 : 0);
+
+    const totalScore_2_1 = section2_1_1Score_2_1 + section2_1_2Score_2_1 + section2_1_3Score_2_1 + section2_1_4Score_2_1 + section2_1_5Score_2_1 + section2_1_6Score_2_1;
+
+    document.getElementById('section2_1Score_2_1').textContent = `2.1 水池 分数: ${totalScore_2_1}`;
+    document.getElementById('section2_1_1Score_2_1').textContent = `2.1.1 水池完好性 分数: ${section2_1_1Score_2_1}`;
+    document.getElementById('section2_1_2Score_2_1').textContent = `2.1.2 水池材质 分数: ${section2_1_2Score_2_1}`;
+    document.getElementById('section2_1_3Score_2_1').textContent = `2.1.3 水池进水 分数: ${section2_1_3Score_2_1}`;
+    document.getElementById('section2_1_4Score_2_1').textContent = `2.1.4 水池排水 分数: ${section2_1_4Score_2_1}`;
+    document.getElementById('section2_1_5Score_2_1').textContent = `2.1.5 安全性 分数: ${section2_1_5Score_2_1}`;
+    document.getElementById('section2_1_6Score_2_1').textContent = `2.1.6 水池生消合用 分数: ${section2_1_6Score_2_1}`;
+    document.getElementById('totalScore_2_1').textContent = `总分2.1: ${totalScore_2_1}`;
+
+    if (totalScore_2_1 < 15) {
+      document.getElementById('totalScore_2_1').classList.add('alarm');
+    } else {
+      document.getElementById('totalScore_2_1').classList.remove('alarm');
+    }
+    return totalScore_2_1;
+  }
+
+  // Calculate the score initially
+  calculateScore_2_1();
+
+
+  function calculateScore_2_2() {
+    const rust_2_2 = document.getElementById('rust_2_2').value;
+    const leak_2_2 = document.getElementById('leak_2_2').value;
+    const material_2_2 = document.getElementById('material_2_2').value;
+    const connection_2_2 = document.getElementById('connection_2_2').value;
+
+    const section2_2_1Score_2_2 = (rust_2_2 === 'yes' ? 1 : 0) + (leak_2_2 === 'yes' ? 1 : 0);
+    const section2_2_2Score_2_2 = (material_2_2 === 'stainlessSteelOrCopper' ? 2 : (material_2_2 === 'steelPlasticComposite' ? 2 : (material_2_2 === 'plastic' ? 0 : 4)));
+    const section2_2_3Score_2_2 = (connection_2_2 === 'no' ? 4 : 0);
+
+    const totalScore_2_2 = section2_2_1Score_2_2 + section2_2_2Score_2_2 + section2_2_3Score_2_2;
+
+    document.getElementById('section2_2Score_2_2').textContent = `2.2 管道 分数: ${totalScore_2_2}`;
+    document.getElementById('section2_2_1Score_2_2').textContent = `2.2.1 泵房管道完好性 分数: ${section2_2_1Score_2_2}`;
+    document.getElementById('section2_2_2Score_2_2').textContent = `2.2.2 泵房管道材质 分数: ${section2_2_2Score_2_2}`;
+    document.getElementById('section2_2_3Score_2_2').textContent = `2.2.3 泵房管道生消合用 分数: ${section2_2_3Score_2_2}`;
+    document.getElementById('totalScore_2_2').textContent = `总分2.2: ${totalScore_2_2}`;
+
+    if (totalScore_2_2 < 15) {
+      document.getElementById('totalScore_2_2').classList.add('alarm');
+    } else {
+      document.getElementById('totalScore_2_2').classList.remove('alarm');
+    }
+    return totalScore_2_2;
+  }
+
+  // Calculate the score initially
+  calculateScore_2_2();
+
+
+
+  function calculateScore_2_3() {
+    const rustLeak_2_3 = document.getElementById('rustLeak_2_3').value;
+    const damage_2_3 = document.getElementById('damage_2_3').value;
+    const material_2_3 = document.getElementById('material_2_3').value;
+    const mode_2_3 = document.getElementById('mode_2_3').value;
+
+    const section2_3_1Score_2_3 = (rustLeak_2_3 === 'yes' ? 1 : 0) + (damage_2_3 === 'yes' ? 1 : 0);
+    const section2_3_2Score_2_3 = (material_2_3 === 'stainlessSteel' ? 0.5 : (material_2_3 === 'castIron' ? 0 : 0));
+    const section2_3_3Score_2_3 = (mode_2_3 === 'vertical' ? 0.5 : (mode_2_3 === 'horizontal' ? 0 : 0));
+
+    const totalScore_2_3 = section2_3_1Score_2_3 + section2_3_2Score_2_3 + section2_3_3Score_2_3;
+
+    document.getElementById('section2_3Score_2_3').textContent = `2.3 水泵 分数: ${totalScore_2_3}`;
+    document.getElementById('section2_3_1Score_2_3').textContent = `2.3.1 水泵完好性 分数: ${section2_3_1Score_2_3}`;
+    document.getElementById('section2_3_2Score_2_3').textContent = `2.3.2 水泵材质 分数: ${section2_3_2Score_2_3}`;
+    document.getElementById('section2_3_3Score_2_3').textContent = `2.3.3 水泵模式 分数: ${section2_3_3Score_2_3}`;
+    document.getElementById('totalScore_2_3').textContent = `总分2.3: ${totalScore_2_3}`;
+
+    if (totalScore_2_3 < 15) {
+      document.getElementById('totalScore_2_3').classList.add('alarm');
+    } else {
+      document.getElementById('totalScore_2_3').classList.remove('alarm');
+    }
+    return totalScore_2_3;
+  }
+
+  // Calculate the score initially
+  calculateScore_2_3();
+
+  function calculateScore_2_4() {
+    const instrument_2_4 = document.getElementById('instrument_2_4').value;
+    const valve_2_4 = document.getElementById('valve_2_4').value;
+
+    const section2_4_1Score_2_4 = (instrument_2_4 === 'yes' ? 0.5 : 0);
+    const section2_4_2Score_2_4 = (valve_2_4 === 'yes' ? 2.0 : 0);
+
+    const totalScore_2_4 = section2_4_1Score_2_4 + section2_4_2Score_2_4;
+
+    document.getElementById('section2_4Score_2_4').textContent = `2.4 附属设施 分数: ${totalScore_2_4}`;
+    document.getElementById('section2_4_1Score_2_4').textContent = `2.4.1 仪表 分数: ${section2_4_1Score_2_4}`;
+    document.getElementById('section2_4_2Score_2_4').textContent = `2.4.2 阀门 分数: ${section2_4_2Score_2_4}`;
+    document.getElementById('totalScore_2_4').textContent = `总分2.4: ${totalScore_2_4}`;
+
+    if (totalScore_2_4 < 15) {
+      document.getElementById('totalScore_2_4').classList.add('alarm');
+    } else {
+      document.getElementById('totalScore_2_4').classList.remove('alarm');
+    }
+    return totalScore_2_4;
+  }
+
+  // Calculate the score initially
+  calculateScore_2_4();
+
+
+
+  function calculateScore_2_5() {
+    const noise_2_5 = parseFloat(document.getElementById('noise_2_5').value);
+    const position_2_5 = document.getElementById('position_2_5').value;
+    const drainage_2_5 = document.getElementById('drainage_2_5').value;
+    const ventilation_2_5 = document.getElementById('ventilation_2_5').value;
+    const clutter_2_5 = document.getElementById('clutter_2_5').value;
+    const residents_2_5 = document.getElementById('residents_2_5').value;
+    const accessControl_2_5 = document.getElementById('accessControl_2_5').value;
+    const surveillance_2_5 = document.getElementById('surveillance_2_5').value;
+
+    const section2_5_1Score_2_5 = (noise_2_5 === 1 ? 4.5 : (noise_2_5 === 2 ? 2.5 : 0));
+    const section2_5_2Score_2_5 = (position_2_5 === 'yes' ? 0 : (position_2_5 === 'no' && noise_2_5 > 40 ? 15 : 0));
+    const section2_5_3Score_2_5 = (drainage_2_5 === 'yes' && ventilation_2_5 === 'yes' ? 3.0 : (drainage_2_5 === 'yes' || ventilation_2_5 === 'yes' ? 1.0 : 0));
+    const section2_5_4Score_2_5 = (clutter_2_5 === 'no' && residents_2_5 === 'no' ? 4.0 : (clutter_2_5 === 'yes' || residents_2_5 === 'yes' ? 0 : 0));
+    const section2_5_5Score_2_5 = (accessControl_2_5 === 'yes' ? 0.5 : 0) + (surveillance_2_5 === 'yes' ? 1 : 0);
+
+    const totalScore_2_5 = section2_5_1Score_2_5 + section2_5_2Score_2_5 + section2_5_3Score_2_5 + section2_5_4Score_2_5 + section2_5_5Score_2_5;
+
+    document.getElementById('section2_5Score_2_5').textContent = `2.5 泵房环境 分数: ${totalScore_2_5}`;
+    document.getElementById('section2_5_1Score_2_5').textContent = `2.5.1 噪音 分数: ${section2_5_1Score_2_5}`;
+    document.getElementById('section2_5_2Score_2_5').textContent = `2.5.2 位置 分数: ${section2_5_2Score_2_5}`;
+    document.getElementById('section2_5_3Score_2_5').textContent = `2.5.3 通风排水 分数: ${section2_5_3Score_2_5}`;
+    document.getElementById('section2_5_4Score_2_5').textContent = `2.5.4 堆物住人 分数: ${section2_5_4Score_2_5}`;
+    document.getElementById('section2_5_5Score_2_5').textContent = `2.5.5 安防监控 分数: ${section2_5_5Score_2_5}`;
+    document.getElementById('totalScore_2_5').textContent = `总分2.5: ${totalScore_2_5}`;
+
+    if (totalScore_2_5 < 15) {
+      document.getElementById('totalScore_2_5').classList.add('alarm');
+    } else {
+      document.getElementById('totalScore_2_5').classList.remove('alarm');
+    }
+    return totalScore_2_5;
+  }
+
+  // Calculate the score initially
+  calculateScore_2_5();
+
+
+
+  function calculateScore_3_1() {
+    const corrosion_3_1 = document.getElementById('corrosion_3_1').value;
+    const leakage_3_1 = document.getElementById('leakage_3_1').value;
+    const material_3_1 = document.getElementById('material_3_1').value;
+    const electronic_control_3_1 = document.getElementById('electronic_control_3_1').value;
+    const inlet_valve_3_1 = document.getElementById('inlet_valve_3_1').value;
+    const float_valve_3_1 = document.getElementById('float_valve_3_1').value;
+    const drainage_facility_3_1 = document.getElementById('drainage_facility_3_1').value;
+    const insect_screen_3_1 = document.getElementById('insect_screen_3_1').value;
+    const air_partition_3_1 = document.getElementById('air_partition_3_1').value;
+    const life_fire_separate_3_1 = document.getElementById('life_fire_separate_3_1').value;
+
+    const section3_1_1Score_3_1 = (corrosion_3_1 === 'no' && leakage_3_1 === 'no' ? 3.5 : (corrosion_3_1 === 'yes' || leakage_3_1 === 'yes' ? 0 : 0));
+    const section3_1_2Score_3_1 = (material_3_1 === 'stainless' ? 2.0 : (material_3_1 === 'concrete_tiles_stainless' ? 1.5 : (material_3_1 === 'concrete_pe_nanocoating' ? 1.0 : 0)));
+    const section3_1_3Score_3_1 = (electronic_control_3_1 === 'yes' && inlet_valve_3_1 === 'yes' && float_valve_3_1 === 'yes' ? 3.0 : (electronic_control_3_1 === 'no' ? 2.0 : (inlet_valve_3_1 === 'no' ? 1.0 : 0)));
+    const section3_1_4Score_3_1 = (drainage_facility_3_1 === 'yes' && insect_screen_3_1 === 'yes' && air_partition_3_1 === 'yes' ? 1.0 : (drainage_facility_3_1 === 'no' ? 0.5 : 0));
+    const section3_1_5Score_3_1 = (life_fire_separate_3_1 === 'yes' ? 5.0 : 0);
+
+    const totalScore_3_1 = section3_1_1Score_3_1 + section3_1_2Score_3_1 + section3_1_3Score_3_1 + section3_1_4Score_3_1 + section3_1_5Score_3_1;
+
+    document.getElementById('section3_1Score_3_1').textContent = `3.1 水箱 分数: ${totalScore_3_1}`;
+    document.getElementById('section3_1_1Score_3_1').textContent = `3.1.1 水箱完好性 分数: ${section3_1_1Score_3_1}`;
+    document.getElementById('section3_1_2Score_3_1').textContent = `3.1.2 水箱材质 分数: ${section3_1_2Score_3_1}`;
+    document.getElementById('section3_1_3Score_3_1').textContent = `3.1.3 水箱进水 分数: ${section3_1_3Score_3_1}`;
+    document.getElementById('section3_1_4Score_3_1').textContent = `3.1.4 水箱排水 分数: ${section3_1_4Score_3_1}`;
+    document.getElementById('section3_1_5Score_3_1').textContent = `3.1.5 水箱生消合用 分数: ${section3_1_5Score_3_1}`;
+    document.getElementById('totalScore_3_1').textContent = `总分3.1: ${totalScore_3_1}`;
+
+    if (totalScore_3_1 < 8) {
+      document.getElementById('totalScore_3_1').classList.add('alarm');
+    } else {
+      document.getElementById('totalScore_3_1').classList.remove('alarm');
+    }
+    return totalScore_3_1;
+  }
+
+  // Calculate the score initially
+  calculateScore_3_1();
+
+
+  function calculateScore_3_2() {
+    const insulation_3_2 = document.getElementById('insulation_3_2').value;
+    const lock_3_2 = document.getElementById('lock_3_2').value;
+    const safety_fence_3_2 = document.getElementById('safety_fence_3_2').value;
+    const rust_leakage_3_2 = document.getElementById('rust_leakage_3_2').value;
+    const damage_3_2 = document.getElementById('damage_3_2').value;
+
+    const section3_2_1Score_3_2 = (insulation_3_2 === 'yes' && lock_3_2 === 'yes' && safety_fence_3_2 === 'yes' ? 3.0 : (insulation_3_2 === 'no' ? 2.0 : (lock_3_2 === 'no' ? 1.0 : (safety_fence_3_2 === 'no' ? 1.0 : 0))));
+    const section3_3Score_3_2 = (rust_leakage_3_2 === 'yes' ? -2 : (damage_3_2 === 'yes' ? -2 : (rust_leakage_3_2 === 'no' && damage_3_2 === 'no' ? 0 : -1)));
+
+    const totalScore_3_2 = section3_2_1Score_3_2 + section3_3Score_3_2;
+
+    document.getElementById('section3_2Score_3_2').textContent = `3.2 屋顶水箱环境 分数: ${section3_2_1Score_3_2}`;
+    document.getElementById('section3_3Score_3_2').textContent = `3.3 屋顶增压泵（如有） 分数: ${section3_3Score_3_2}`;
+    document.getElementById('totalScore_3_2').textContent = `总分3.2: ${totalScore_3_2}`;
+
+    if (totalScore_3_2 < 8) {
+      document.getElementById('totalScore_3_2').classList.add('alarm');
+    } else {
+      document.getElementById('totalScore_3_2').classList.remove('alarm');
+    }
+    return totalScore_3_2;
+  }
+
+  // Calculate the score initially
+  calculateScore_3_2();
+
+
+  function calculateScore_4() {
+    // Section 4
+    const inspectionCleaning_4 = document.getElementById('inspection_cleaning_4').value;
+    const cleaningDisinfection_4 = document.getElementById('cleaning_disinfection_4').value;
+
+
+    const section4_1Score_4 = (inspectionCleaning_4 === 'yes' ? 1.0 :0.0 );
+    const section4_2Score_4 = (cleaningDisinfection_4 === 'yes' ? 3.0 :0.0 );
+
+
+    const section4Score_4 = section4_1Score_4 + section4_2Score_4;
+
+    // Section 5
+    const regularInspectionPumpRoom_4 = document.getElementById('regular_inspection_pump_room_4').value;
+    const regularMaintenancePumpUnit_4 = document.getElementById('regular_maintenance_pump_unit_4').value;
+    const regularSwitchSparePumpGroup_4 = document.getElementById('regular_switch_spare_pump_group_4').value;
+    const repairDamagedEquipment_4 = document.getElementById('repair_damaged_equipment_4').value;
+    const normalOperationDischargeEquipment_4 = document.getElementById('normal_operation_discharge_equipment_4').value;
+    const regularOperationValves_4 = document.getElementById('regular_operation_valves_4').value;
+
+    const section4_5_1Score_4 = (regularInspectionPumpRoom_4 === 'yes' ? 1.0 :0.0 );
+    const section4_5_2Score_4 = (regularMaintenancePumpUnit_4 === 'yes' ? 1.0 :0.0 );
+    const section4_5_3Score_4 = (regularSwitchSparePumpGroup_4 === 'yes' ? 1.0 :0.0 );
+    const section4_5_4Score_4 = (repairDamagedEquipment_4 === 'yes' ? 1.0 :0.0 );
+    const section4_5_5Score_4 = (normalOperationDischargeEquipment_4 === 'yes' ? 1.0 :0.0 );
+    const section4_5_6Score_4 = (regularOperationValves_4 === 'yes' ? 1.0 :0.0 );
+
+    const section5Score_4 = section4_5_1Score_4 + section4_5_2Score_4 + section4_5_3Score_4 + section4_5_4Score_4 + section4_5_5Score_4 + section4_5_6Score_4
+
+
+    // Section 6
+    const regularInspectionCorridor_4 = document.getElementById('regular_inspection_corridor_4').value;
+    const regularSwitchPressureReliefValve_4 = document.getElementById('regular_switch_pressure_relief_valve_4').value;
+    const regularMaintenanceValves_4 = document.getElementById('regular_maintenance_valves_4').value;
+    const abolishOldRiser_4 = document.getElementById('abolish_old_riser_4').value;
+
+    const section4_6_1Score_4 = (regularInspectionCorridor_4 === 'yes' ? 1.0 :0.0 );
+    const section4_6_2Score_4 = (regularSwitchPressureReliefValve_4 === 'yes' ? 1.0 :0.0 );
+    const section4_6_3Score_4 = (regularMaintenanceValves_4 === 'yes' ? 1.0 :0.0 );
+    const section4_6_4Score_4 = (abolishOldRiser_4 === 'yes' ? 1.0 :0.0 );
+
+    const section6Score_4 = section4_6_1Score_4 + section4_6_2Score_4 + section4_6_3Score_4 + section4_6_4Score_4
+
+    // Section 7
+    const disinfectantQuickTest_4 = document.getElementById('disinfectant_quick_test_4').value;
+    const disinfectantSource_4 = document.getElementById('disinfectant_source_4').value;
+
+    const section4_7_1Score_4 = (disinfectantQuickTest_4 === 'yes' ? 0.5 :0.0 );
+    const section4_7_2Score_4 = (disinfectantSource_4 === 'yes' ? 0.5 :0.0 );
+
+
+    const section7Score_4 = section4_7_1Score_4 + section4_7_2Score_4;
+
+    // Total Score
+    const totalScore_4 = section4Score_4 + section5Score_4 + section6Score_4 + section7Score_4;
+
+    // Display scores
+    document.getElementById('section4Score_4').textContent = `4 水箱（池） 分数: ${section4Score_4}`;
+    document.getElementById('section5Score_4').textContent = `5 泵房 分数: ${section5Score_4}`;
+    document.getElementById('section6Score_4').textContent = `6 楼宇管道 分数: ${section6Score_4}`;
+    document.getElementById('section7Score_4').textContent = `7 消毒剂 分数: ${section7Score_4}`;
+    document.getElementById('totalScore_4').textContent = `总分4: ${totalScore_4}`;
+
+    // Check if an alarm is needed (adjust the threshold as needed)
+    const alarmThreshold = 8;
+    if (totalScore_4 < alarmThreshold) {
+      document.body.classList.add('alarm');
+    } else {
+      document.body.classList.remove('alarm');
+    }
+    return totalScore_4;
+  }
+
+  // Calculate score initially
+  calculateScore_4();
+
+
+
+  function calculateScore_8() {
+    // Section 8
+    const supplyMode_8 = document.getElementById('supply_mode_8').value;
+    let section8Score_8 = 0;
+
+    switch (supplyMode_8) {
+      case 'option1':
+        section8Score_8 = 2.5;
+        break;
+      case 'option2':
+        section8Score_8 = 3.0;
+        break;
+      case 'option3':
+        section8Score_8 = 2.0;
+        break;
+      case 'option4':
+        section8Score_8 = 2.5;
+        break;
+      case 'option5':
+        section8Score_8 = 2.0;
+        break;
+      case 'option6':
+        section8Score_8 = 1.0;
+        break;
+      case 'option7':
+        section8Score_8 = 2.0;
+        break;
+      case 'option8':
+        section8Score_8 = 0; // No score
+        break;
+    }
+
+    // Section 9
+    const equipmentAge_8 = document.getElementById('equipment_age_8').value;
+    let section9Score_8 = 0;
+
+    switch (equipmentAge_8) {
+      case 'option1':
+        section9Score_8 = 3.0;
+        break;
+      case 'option2':
+        section9Score_8 = 2.0;
+        break;
+      case 'option3':
+        // No score and risk warning
+        section9Score_8 = 0;
+        alert('设备使用年限超过10年，存在风险！');
+        break;
+      case 'option4':
+        // Alarm
+        section9Score_8 = 0;
+        alert('设备使用年限超过20年，报警！');
+        break;
+    }
+
+    // Total Score
+    const totalScore_8 = section8Score_8 + section9Score_8;
+
+    // Display scores
+    document.getElementById('section8Score_8').textContent = `8 供水模式 分数: ${section8Score_8}`;
+    document.getElementById('section9Score_8').textContent = `9 设备使用年限 分数: ${section9Score_8}`;
+    document.getElementById('totalScore_8').textContent = `总分8: ${totalScore_8}`;
+
+    // Check if an alarm is needed (adjust the threshold as needed)
+    const alarmThreshold = 8;
+    if (totalScore_8 < alarmThreshold) {
+      document.body.classList.add('alarm');
+    } else {
+      document.body.classList.remove('alarm');
+    }
+    return totalScore_8;
+  }
+
+  // Calculate score initially
+  calculateScore_8();
+
+  function calculateScore_all(){
+    // Total Score
+    const totalScore_all_1 =  calculateScore_1();
+    const totalScore_all_2_1 =  calculateScore_2_1();
+    const totalScore_all_2_2 =  calculateScore_2_2();
+    const totalScore_all_2_3 =  calculateScore_2_3();
+    const totalScore_all_2_4 =  calculateScore_2_4();
+    const totalScore_all_2_5 =  calculateScore_2_5();
+    const totalScore_all_3_1 =  calculateScore_3_1();
+    const totalScore_all_3_2 =  calculateScore_3_2();
+    const totalScore_all_4 =  calculateScore_4();
+    const totalScore_all_8 =  calculateScore_8();
+    const totalScore_all_10 =  calculateScore_10();
+
+    // Total Score
+    const totalScore_all = totalScore_all_1 + totalScore_all_2_1 + totalScore_all_2_2 + totalScore_all_2_3 + totalScore_all_2_4 + totalScore_all_2_5 + totalScore_all_3_1 + totalScore_all_3_2 + totalScore_all_4 + totalScore_all_8+totalScore_all_10;
+
+    // Display scores
+
+    document.getElementById('totalScore_all').textContent = `总分: ${totalScore_all}`;
+
+    // Check if an alarm is needed (adjust the threshold as needed)
+    const alarmThreshold = 50;
+    if (totalScore_all < alarmThreshold) {
+      document.body.classList.add('alarm');
+    } else {
+      document.body.classList.remove('alarm');
+    }
+  }
+
+
+  // Listen for changes and recalculate
+  const selects_all = document.querySelectorAll('select');
+  selects_all.forEach(select => {
+    select.addEventListener('change', calculateScore_all);
+  });
+
+</script>
+</body>
+</html>
